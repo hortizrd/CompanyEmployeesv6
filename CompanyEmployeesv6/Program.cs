@@ -1,3 +1,5 @@
+
+using CompanyEmployeesv6.ActionFilters;
 using CompanyEmployeesv6.Extensions;
 using Contracts;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -31,6 +33,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true;
 });
 
+builder.Services.AddScoped<ValidationFilterAttribute>();
 builder.Services.AddControllers(config =>
 {
     config.RespectBrowserAcceptHeader = true;

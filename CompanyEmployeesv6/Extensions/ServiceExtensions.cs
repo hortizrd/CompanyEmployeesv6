@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using EntityFrameworkCore.UseRowNumberForPaging;
 using LoggerService;
 using Microsoft.EntityFrameworkCore;
 using NLog;
@@ -29,7 +30,10 @@ namespace CompanyEmployeesv6.Extensions
 
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
         services.AddDbContext<RepositoryContext>(opts =>
-            opts.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+       
+         opts.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+        //opts.UseSqlServer("sqlConnection", i => i.UseRowNumberForPaging()));
+        //opts.UseSqlServer("sqlConnection", builder => builder.UseRowNumberForPaging()));
 
         //public static void ConfigureSqlContext(this IServiceCollection services,
         //IConfiguration configuration) =>

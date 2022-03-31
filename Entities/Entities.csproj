@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="EntityFrameworkCore.UseRowNumberForPaging" Version="0.3.0" />
+  </ItemGroup>
+
 </Project>
