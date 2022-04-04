@@ -20,21 +20,21 @@ namespace CompanyEmployees.Presentation.Controllers
         private readonly IServiceManager _service;
         public EmployeesController(IServiceManager service) => _service = service;
 
-		//[HttpGet]
-		//public async Task<IActionResult> GetEmployeesForCompany(Guid companyId, [FromQuery] EmployeeParameters employeeParameters)
-		//{
-		//	var employees = await _service.EmployeeService.GetEmployeesAsync(companyId, employeeParameters, trackChanges: false);
-		//	return Ok(employees);
-		//}
+        //[HttpGet]
+        //public async Task<IActionResult> GetEmployeesForCompany(Guid companyId, [FromQuery] EmployeeParameters employeeParameters)
+        //{
+        //    var employees = await _service.EmployeeService.GetEmployeesAsync(companyId, employeeParameters, trackChanges: false);
+        //    return Ok(employees);
+        //}
 
-		//[HttpGet("{id:guid}", Name = "GetEmployeeForCompany")]
-		//public async Task<IActionResult> GetEmployeeForCompany(Guid companyId, Guid id)
-		//{
-		//	var employee = await _service.EmployeeService.GetEmployeeAsync(companyId, id, trackChanges: false);
-		//	return Ok(employee);
-		//}
+        [HttpGet("{id:guid}", Name = "GetEmployeeForCompany")]
+        public async Task<IActionResult> GetEmployeeForCompany(Guid companyId, Guid id)
+        {
+            var employee = await _service.EmployeeService.GetEmployeeAsync(companyId, id, trackChanges: false);
+            return Ok(employee);
+        }
 
-		[HttpGet]
+        [HttpGet]
 		public async Task<IActionResult> GetEmployeesForCompany(Guid companyId,[FromQuery] EmployeeParameters employeeParameters)
 		{
 			var pagedResult = await _service.EmployeeService.GetEmployeesAsync(companyId,
